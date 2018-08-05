@@ -95,6 +95,10 @@ $ echo $?
 > fi  
 
 
+### Cut
+// behaves like split, you set the delimiter, then the fields that you want to keep    
+$ ... | cut -d $'\t' -f2  
+// splits on a tab, keeps the second field
 
 
 
