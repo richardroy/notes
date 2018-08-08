@@ -96,18 +96,20 @@ $ echo $?
 > fi  
 
 ##### switch / case
-> function {
+> function build {
 >   echo 'build'
 > }
 > 
-> function {
+> function deploy {
 >   echo 'deploy'
 > }
 > 
 > case "$1" in
 >   build|b)
+>     build
 >     ;;
 >   deploy|d)
+>     deploy
 >     ;;
 >   *)
 >     echo "Usage: $0 {build|deploy}"
