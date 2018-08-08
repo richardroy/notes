@@ -95,7 +95,7 @@ $ echo $?
 >  ...  
 > fi  
 
-##### switch 
+##### switch / case
 > function {
 >   echo 'build'
 > }
