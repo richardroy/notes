@@ -86,6 +86,7 @@ $ hello World
 $ echo $?
 
 ### Conditionals
+##### if
 > if [[  ]] || [[ ]]; then  
 >  ...  
 > elif [[  ]]; then   
@@ -93,6 +94,24 @@ $ echo $?
 > else  
 >  ...  
 > fi  
+
+##### switch 
+> function {
+>   echo 'build'
+> }
+> 
+> function {
+>   echo 'deploy'
+> }
+> 
+> case "$1" in
+>   build|b)
+>     ;;
+>   deploy|d)
+>     ;;
+>   *)
+>     echo "Usage: $0 {build|deploy}"
+> esac
 
 
 ### Cut
