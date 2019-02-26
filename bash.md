@@ -10,16 +10,16 @@ $ man find
 $ echo 'hi' > hello.txt
 
 //will overwrite existing text  
-$ echo 'Hello' > hello.txt
-
+$ echo 'Hello' > hello.txt  
+  
 //will append to the base of the file on a new  
 line  
-$ echo 'World' >> hello.txt
-
+$ echo 'World' >> hello.txt  
+  
 ### find
-//search for a file
+//search for a file  
 $ find images / -iname "\*.png"  
-$ find ./ -type d  
+$ find ./ -type d   
 
 ### grep
 //grep on a file, mark matches with a color, show line number, show context of the match, inside the lib/index,js file  
@@ -96,25 +96,25 @@ $ echo $?
 > fi  
 
 ##### switch / case
-> function build {
->   echo 'build'
-> }
-> 
-> function deploy {
->   echo 'deploy'
-> }
-> 
-> case "$1" in
->   build|b)
->     build
->     ;;
->   deploy|d)
->     deploy
->     ;;
->   *)
->     echo "Usage: $0 {build|deploy}"
-> esac
-
+> function build {  
+>   echo 'build'  
+> }  
+>   
+> function deploy {  
+>   echo 'deploy'  
+> }  
+>   
+> case "$1" in  
+>   build|b)  
+>     build  
+>     ;;  
+>   deploy|d)  
+>     deploy  
+>     ;;  
+>   *)  
+>     echo "Usage: $0 {build|deploy}"  
+> esac  
+  
 
 ### Cut
 // behaves like split, you set the delimiter, then the fields that you want to keep    
