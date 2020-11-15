@@ -8,7 +8,16 @@
 <body>
 	<div id="card">
 		<header>{{ title }}</header>
-		<div v-html="content"></div>
+		<div>
+			<input id="itemForm" v-on:keypress.enter="addItem" />
+			<button v-on:click="addItem">Add Dinosaur</button>
+		</div>
+		<ul>
+			<li v-for="(item, index) in items" >
+				<button v-on:click="deleteItem(index)">X</button>
+				{{ item.text }}
+			</li>
+		</ul>
 	</div>
 
 	<script src="script.js"></script>
