@@ -8,39 +8,21 @@
 
 <body>
 
-	<div id="app">
-		<h4>Check Boxes</h4>
-		<input type="checkbox" id="checkbox" v-model="checked">
-		<label for="checkbox">This box is {{ checked ? 'checked' : 'unchecked' }}</label>
-		<hr>
-		<h4>Radio Buttons</h4>
-		<template v-for="dino in dinos">
-			<label>
-	          <input type="radio" v-bind:value="dino" v-model="chosenDino" />
-	          {{ dino }}
-	        </label><br>
-		</template>
-		<span>Favorite: {{ chosenDino }}</span>
-		<hr>
-	
-		<h4>Multi Select:</h4>
-		<select v-model="selected" multiple>
-	        <option v-for="period in periods" v-bind:value="period.value">
-	          {{ period.name }}
-	        </option>
-	      </select><br>
-		<span>Selected IDs: {{ selected }}</span>
-		<hr>
-	
-		<h4>Text Input:</h4>
-		<input type="text" v-model="single" />
-		<p>{{ single }}</p>
-		<hr>
-	
-		<h4>Multiline message:</h4>
-		<textarea v-model="message" placeholder="add multiple lines"></textarea>
-		<p style="white-space: pre">{{ message }}</p>
+	<div id="card">
+		<header>{{ title }}</header>
+		<ul>
+			<li v-for="dino in dinos">
+				<dino-counter v-bind:initial-quantity="dino.quantity" v-bind:name="dino.name" v-on:increment="incrementTotal"></dino-counter>
+			</li>
+		</ul>
+		<p>Total Dinosaurs: {{ total }}</p>
 	</div>
+	
+	<script type="text/x-template" id="dino-counter">
+		<div>
+			<button v-on:click="increment">{{ quantity }}</button> {{ name }}
+		</div>
+	</script>
 
 	<script src="script.js"></script>
 </body>

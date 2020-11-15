@@ -1,21 +1,36 @@
-var app = new Vue({
-  el: "#app",
+var card = new Vue({
+  el: "#card",
   data: {
-    checked: false,
-    selected: [],
-    chosenDino: "",
-    single: "",
-    message: "",
-    dinos: ["Triceratops", "Velociraptor", "Tyrannosaurus"],
-    periods: [
-      { name: "Triassic", value: 1 },
-      { name: "Jurassic", value: 2 },
-      { name: "Cretaceous", value: 3 }
+    title: "Dinosaurs",
+    input: "",
+    total: 0,
+    dinos: [
+      { name: "Tyrannosaurus", quantity: 5 },
+      { name: "Triceratops", quantity: 4 },
+      { name: "Stegosaurus", quantity: 6 }
     ]
   },
   methods: {
-    addDinos: function() {
-      this.count += this.amount;
+    incrementTotal: function(amount) {
+      this.total += amount;
+    }
+  },
+  components: {
+    "dino-counter": {
+      template: "#dino-counter",
+      props: ["initialQuantity", "name"],
+      data: function() {
+        this.$emit("increment", this.initialQuantity);
+        return {
+          quantity: this.initialQuantity
+        };
+      },
+      methods: {
+        increment: function() {
+          this.quantity += 1;
+          this.$emit("increment", 1);
+        }
+      }
     }
   }
 });
