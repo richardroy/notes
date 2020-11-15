@@ -1,21 +1,21 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script data-require="vue.js@*" data-semver="10.0.26" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 	<link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+
 	<div id="card">
-		<header>{{ title }}</header>
-		<div>
-			<input id="itemForm" v-on:keypress.enter="addItem" />
-			<button v-on:click="addItem">Add Dinosaur</button>
-		</div>
+		<header>{{ title | capitalize }}</header>
 		<ul>
-			<li v-for="(item, index) in items" >
-				<button v-on:click="deleteItem(index)">X</button>
-				{{ item.text }}
+			<li v-for="dino in dinos">
+				<h4>{{ dino.text | capitalize }}</h4>
+				<span>The {{ dino.text | undercase }} weighs {{ dino.weight }}.</span>
+				<br>
+				<a href="#">{{ dino.text | undercase | url }}</a>
 			</li>
 		</ul>
 	</div>
