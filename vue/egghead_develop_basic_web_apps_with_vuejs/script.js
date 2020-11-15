@@ -1,21 +1,22 @@
 var card = new Vue({
   el: "#card",
   data: {
-    title: "Style Bindings",
-    isRounded: false,
-    sizeToggle: false,
-    disabled: false,
-    backgroundColor: "#CCCCCC",
-    fontColor: "#000000",
-    range: 50
+    title: "Epic Dinosaur Counter",
+    input: "",
+    dinos: [
+      { name: "Triceratops", quantity: 4 },
+      { name: "Velociraptor", quantity: 3 }
+    ]
   },
-  computed: {
-    styles: function() {
-      return {
-        color: this.fontColor,
-        background: this.backgroundColor,
-        "margin-left": this.range + "%"
-      };
+  methods: {
+    addItem: function() {
+      if (!this.input) return;
+
+      this.dinos.push({ name: this.input, quantity: 1 });
+      this.input = "";
+    },
+    removeItem: function(dino) {
+      this.dinos.splice(dino, 1);
     }
   }
 });

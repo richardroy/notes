@@ -10,17 +10,21 @@
 
 	<div id="card">
 		<header>{{ title }}</header>
-		<button v-bind:class="[sizeToggle ? 'large' : '', {'rounded': isRounded}]" v-bind:style="styles" v-bind:disabled="disabled">Start Tour</button>
-		<hr>
-		<h4>Options</h4>
-		<ul>
-			<li><input type="checkbox" v-model="sizeToggle"><label>Large</label></li>
-			<li><input type="checkbox" id="round" v-model="isRounded"><label for="round">Rounded</label></li>
-			<li><input type="checkbox" v-model="disabled"><label>Disabled</label></li>
-			<li><input type="text" v-model="backgroundColor" /><label>Background Color</label></li>
-			<li><input type="text" v-model="fontColor" /><label>Font Color</label></li>
-			<li><input type="range" v-model="range" min="15" max="85"><label>Position</label></li>
-		</ul>
+		<form v-on:submit.prevent="addItem">
+			<input id="itemForm" v-model="input">
+			<button>Add Dinosaur</button>
+		</form>
+		<template v-if="dinos.length > 0">
+			<h4>Dinosaur List</h4>
+			<ul>
+				<li v-for="dino in dinos">
+					<button v-show="dino.quantity < 5" v-on:click="dino.quantity += 1">+</button> {{ dino.quantity }}
+					<button v-show="dino.quantity > 1" v-on:click="dino.quantity -= 1">-</button> {{ dino.name }}<button v-on:click="removeItem"
+					 class="extinct">Make Extinct</button>
+				</li>
+			</ul>
+		</template>
+		<p v-else>You have no Dinosaurs yet</p>
 	</div>
 
 	<script src="script.js"></script>
