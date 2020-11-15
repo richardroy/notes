@@ -9,22 +9,12 @@
 <body>
 
 	<div id="card">
-		<header>{{ title }}</header>
-		<form v-on:submit.prevent="addItem">
-			<input id="itemForm" v-model="input">
-			<button>Add Dinosaur</button>
+		<header>Dinosaurs</header>
+		<form v-on:submit.prevent="addDinos">
+			<button type="submit">Add {{ amount }} Dinosaurs</button>
+			<input type="number" v-model.number="amount" />
 		</form>
-		<template v-if="dinos.length > 0">
-			<h4>Dinosaur List</h4>
-			<ul>
-				<li v-for="dino in dinos">
-					<button v-show="dino.quantity < 5" v-on:click="dino.quantity += 1">+</button> {{ dino.quantity }}
-					<button v-show="dino.quantity > 1" v-on:click="dino.quantity -= 1">-</button> {{ dino.name }}<button v-on:click="removeItem"
-					 class="extinct">Make Extinct</button>
-				</li>
-			</ul>
-		</template>
-		<p v-else>You have no Dinosaurs yet</p>
+		<p>You have {{ total }} dinosaurs!</p>
 	</div>
 
 	<script src="script.js"></script>

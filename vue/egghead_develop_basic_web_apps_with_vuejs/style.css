@@ -22,13 +22,6 @@ body {
 form {
   padding: 1em;
 }
-.extinct {
-  float: right;
-}
-
-h4 {
-  margin-left: 1em;
-}
 
 #card ul {
   list-style: none;
