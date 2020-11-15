@@ -23,6 +23,11 @@ export default class Hello extends Parent {
     console.log('created')
   }
 
+  beforeRouteEnter(to, from, next) {
+    console.log('Enter')
+    next()
+  }
+
   clicked() {
     console.log('clicked')
   }
