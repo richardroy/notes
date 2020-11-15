@@ -3,27 +3,22 @@
 
 <head>
 	<script data-require="vue.js@*" data-semver="10.0.26" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.min.js"></script>
 	<link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
 	<div id="card">
-		<header>{{ title }}</span>
-		</header>
-		<form v-on:submit="addItem">
+		<header>{{ title }}</header>
+		<form v-on:submit.prevent="addItem">
 			<input id="itemForm" v-model="input">
-			<button>Add Dinosaur</button>
+			<button v-bind:disabled="buttonDisabled">{{ buttonText }}</button>
 		</form>
 		<ul>
-			<li v-for="item in items">
-				<button v-on:click="item.quantity += 1">+</button> {{ item.quantity }}
-				<button v-on:click="item.quantity -= 1">-</button> {{ item.text }}<button v-on:click="removeItem" class="extinct">Make Extinct</button>
+			<li v-for="(item, index) in items">
+				<span>{{ item }}</span>
 			</li>
-		</ul>
-		<ul>
-			<li>Total Dinosaurs: {{ totalDinos }} <span>Updated: {{ dinosUpdated }}</span></li>
-			<li>Total Species: {{ totalSpecies }} <span>Updated: {{ speciesUpdated }}</span></li>
 		</ul>
 	</div>
 
