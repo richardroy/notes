@@ -1,36 +1,46 @@
-var card = new Vue({
+var dinoEdit = {
+  template: "#dino-edit",
+  props: ["initialQuantity", "name", "index"],
+  data: function() {
+    return {
+      quantity: this.initialQuantity
+    };
+  },
+  methods: {
+    increment: function() {
+      this.quantity += 1;
+    }
+  }
+};
+var dinoShow = {
+  template: "#dino-show",
+  props: ["name", "diet"]
+};
+window.card = new Vue({
   el: "#card",
   data: {
     title: "Dinosaurs",
     input: "",
-    total: 0,
-    dinos: [
-      { name: "Tyrannosaurus", quantity: 5 },
-      { name: "Triceratops", quantity: 4 },
-      { name: "Stegosaurus", quantity: 6 }
+    currentView: "dino-edit",
+    items: [
+      { text: "Tyrannosaurus", quantity: 5, diet: "Carnivore" },
+      { text: "Triceratops", quantity: 4, diet: "Herbivore" },
+      { text: "Stegosaurus", quantity: 6, diet: "Herbivore" }
     ]
   },
   methods: {
-    incrementTotal: function(amount) {
-      this.total += amount;
+    toggle: function() {
+      this.currentView =
+        this.currentView === "dino-edit" ? "dino-show" : "dino-edit";
+    }
+  },
+  computed: {
+    editLabel: function() {
+      return this.currentView === "dino-edit" ? "Show" : "Edit";
     }
   },
   components: {
-    "dino-counter": {
-      template: "#dino-counter",
-      props: ["initialQuantity", "name"],
-      data: function() {
-        this.$emit("increment", this.initialQuantity);
-        return {
-          quantity: this.initialQuantity
-        };
-      },
-      methods: {
-        increment: function() {
-          this.quantity += 1;
-          this.$emit("increment", 1);
-        }
-      }
-    }
+    "dino-edit": dinoEdit,
+    "dino-show": dinoShow
   }
 });

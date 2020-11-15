@@ -17,6 +17,15 @@ body {
   font-size: 1.5em;
 }
 
+header span {
+  float: right;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.75em;
+  font-weight: normal;
+  font-style: italic;
+}
+
 #card div,
 #card p {
   padding: 1em;
