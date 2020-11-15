@@ -3,7 +3,6 @@
 
 <head>
 	<script data-require="vue.js@*" data-semver="10.0.26" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.min.js"></script>
 	<link rel="stylesheet" href="style.css" />
 </head>
 
@@ -11,14 +10,16 @@
 
 	<div id="card">
 		<header>{{ title }}</header>
-		<form v-on:submit.prevent="addItem">
-			<input id="itemForm" v-model="input">
-			<button v-bind:disabled="buttonDisabled">{{ buttonText }}</button>
-		</form>
+		<button v-bind:class="[sizeToggle ? 'large' : '', {'rounded': isRounded}]" v-bind:style="styles" v-bind:disabled="disabled">Start Tour</button>
+		<hr>
+		<h4>Options</h4>
 		<ul>
-			<li v-for="(item, index) in items">
-				<span>{{ item }}</span>
-			</li>
+			<li><input type="checkbox" v-model="sizeToggle"><label>Large</label></li>
+			<li><input type="checkbox" id="round" v-model="isRounded"><label for="round">Rounded</label></li>
+			<li><input type="checkbox" v-model="disabled"><label>Disabled</label></li>
+			<li><input type="text" v-model="backgroundColor" /><label>Background Color</label></li>
+			<li><input type="text" v-model="fontColor" /><label>Font Color</label></li>
+			<li><input type="range" v-model="range" min="15" max="85"><label>Position</label></li>
 		</ul>
 	</div>
 
